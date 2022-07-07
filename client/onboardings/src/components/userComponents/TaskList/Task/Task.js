@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import useStyles from './styles';
-import { Card, CardContent, Button, Typography} from '@material-ui/core';
+import {Card, CardContent, Button, Typography} from '@mui/material';
 
 const Task = ({task}) => {
     const classes = useStyles();

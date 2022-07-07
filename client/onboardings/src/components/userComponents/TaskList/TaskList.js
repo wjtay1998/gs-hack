@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import useStyles from './styles';
-import { Grid, CircularProgress} from '@material-ui/core'
+import { Grid, CircularProgress} from '@mui/material'
 import * as api from '../../../api/index.js';
 import Task from './Task/Task.js';
 
