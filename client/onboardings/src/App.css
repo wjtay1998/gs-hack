@@ -36,3 +36,5 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face{font-family:Goldman Sans Thin;src:url("https://cdn.gs.com/fonts/goldman-sans/v1/goldman-sans-thin.woff2") format("woff2"),url("https://cdn.gs.com/fonts/goldman-sans/v1/goldman-sans-thin.woff") format("woff");}

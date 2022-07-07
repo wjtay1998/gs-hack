@@ -1,22 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom";
+import AdminPage from './components/adminComponents/AdminPage.js';
+import LoginPage from './components/LoginPage.js';
 
 function App() {
   return (
     <Router>
-      <Switch>
+      <Routes>
         <Route
-          exact path = "/"
-          render = {() => {
-            return (<Redirect to="/login"/> )
-          }}
+          path = "/"
+          element = {<Navigate replace to="/login" />
+          }
         />
-        <Route exact path = "/admin" component = {AdminPage}/>
-        <Route exact path = "/admin/createTasks" component = {CreateTaskPage}/>
+        <Route path= "/admin" element = {AdminPage}/>
+        <Route path = "/login" element = {LoginPage}/>
+        {/* <Route exact path = "/admin/createTasks" component = {CreateTaskPage}/>
         <Route exact path = "/admin/module" component = {ModulePage} />
         <Route exact path = "/user" component = {UserPage}/>
-        <Route exact path = "/user/schedule" component = {SchedulerPage}/>
-      </Switch>
+        <Route exact path = "/user/schedule" component = {SchedulerPage}/> */}
+      </Routes>
     </Router>
   );
 }
