@@ -14,9 +14,9 @@ function App() {
         />
         <Route path= "/admin" element = {AdminPage}/>
         <Route path = "/login" element = {LoginPage}/>
+        <Route exact path = "/user" element = {UserPage}/>
         {/* <Route exact path = "/admin/createTasks" component = {CreateTaskPage}/>
         <Route exact path = "/admin/module" component = {ModulePage} />
-        <Route exact path = "/user" component = {UserPage}/>
         <Route exact path = "/user/schedule" component = {SchedulerPage}/> */}
       </Routes>
     </Router>
