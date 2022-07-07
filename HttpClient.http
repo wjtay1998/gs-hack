@@ -1,0 +1,38 @@
+GET http://localhost:5000
+###
+POST http://localhost:5000/tasks
+Content-Type: application/json
+
+{
+    "created_date": "2022-07-07",
+    "updated_date": "2022-07-07",
+    "post_content": "<html>Hello World</html>",
+    "video_link": "https://youtu.be/2KEjHx5hxKs",
+    "title": "test title",
+    "desc": "this is a test",
+    "resource_links": ["resource_link1", "resource_link2"],
+    "updated_by": "john",
+    "created_by": "john",
+    "if_required": false
+}
+
+###
+GET http://localhost:5000/tasks
+
+###
+PATCH http://localhost:5000/tasks
+Content-Type: application/json
+
+{
+    "ID":"b6715320-a34e-49f4-89d7-7767109d3868",
+    "created_date": "2022-07-08",
+    "updated_date": "2022-07-08",
+    "post_content": "<html>Hello World 2</html>",
+    "video_link": "https://youtu.be/2KEjHx5hxKs",
+    "title": "test title 2",
+    "desc": "this is a test 2",
+    "resource_links": ["resource_link12", "resource_link22"],
+    "updated_by": "john2",
+    "created_by": "john2",
+    "if_required": true
+}
