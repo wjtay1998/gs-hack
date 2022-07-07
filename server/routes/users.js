@@ -7,7 +7,7 @@ router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.patch('/', updateUser);
 router.delete('/', deleteUser);
-router.get('/getUserTasks', getUserTasks);
+router.post('/getUserTasks', getUserTasks);
 router.post('/createUserTask', createUserTask);
 
 

@@ -2,6 +2,7 @@ import './App.css';
 import {BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom";
 import AdminPage from './components/adminComponents/AdminPage.js';
 import LoginPage from './components/LoginPage.js';
+import UserPage from './components/userComponents/UserPage';
 
 function App() {
   return (
