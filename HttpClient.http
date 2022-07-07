@@ -13,7 +13,8 @@ Content-Type: application/json
     "resource_links": ["resource_link1", "resource_link2"],
     "updated_by": "john",
     "created_by": "john",
-    "if_required": false
+    "if_required": false,
+    "estimated_comp_mins": 60
 }
 
 ###
@@ -34,5 +35,69 @@ Content-Type: application/json
     "resource_links": ["resource_link12", "resource_link22"],
     "updated_by": "john2",
     "created_by": "john2",
-    "if_required": true
+    "if_required": true,
+    "estimated_comp_mins": 60
+}
+
+###
+DELETE http://localhost:5000/tasks
+Content-Type: application/json
+
+{
+    "ID": "b6715320-a34e-49f4-89d7-7767109d3868"
+}
+
+###
+POST http://localhost:5000/users/register
+Content-Type: application/json
+
+{
+    "username": "test-user-1",
+    "password": "password1",
+    "dept": "test-dept",
+    "user_task_list":{"maungh^taskid": {
+        "task_id": "taskid",
+        "is_completed": false,
+        "date_assigned": "2022-07-04",
+        "scheduled_date": "2022-08-04T09:00:00"
+    }}
+}
+
+###
+POST http://localhost:5000/users/login
+Content-Type: application/json
+
+{
+    "username": "test-user-2",
+    "password": "password1"
+}
+
+###
+GET http://localhost:5000/users/getUserTasks
+Content-Type: application/json
+
+{
+    "ID":"bfb3e029-98bc-47e6-bf9f-0f27f2a29a6c"
+}
+
+###
+GET http://localhost:5000/users/getUserTasks
+Content-Type: application/json
+
+{
+    "ID":"abdee8ed-2bea-4e82-aff0-d78f51b271c5"
+}
+
+###
+POST http://localhost:5000/users/createUserTask
+Content-Type: application/json
+
+{
+    "task_id": "taskid5",
+    "is_completed": false,
+    "date_assigned": "2022-07-06",
+    "scheduled_date": "2022-08-05T09:00:00",
+    "task_name": "task_name_4",
+    "task_description": "task_description_4",
+    "user_id": "abdee8ed-2bea-4e82-aff0-d78f51b271c5"
 }
