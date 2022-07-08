@@ -96,12 +96,12 @@ POST http://localhost:5000/users/createUserTask
 Content-Type: application/json
 
 {
-    "task_id": "taskid5",
-    "is_completed": false,
+    "task_id": "7743ac88-6f2a-4d92-ab8a-8fcd999c189d",
+    "is_completed": true,
     "date_assigned": "2022-07-06",
     "scheduled_date": "2022-08-05T09:00:00",
-    "task_name": "task_name_4",
-    "task_description": "task_description_4",
+    "task_name": "HCM Onboarding",
+    "task_description": "The best onboarding ever",
     "user_id": "abdee8ed-2bea-4e82-aff0-d78f51b271c5"
 }
 

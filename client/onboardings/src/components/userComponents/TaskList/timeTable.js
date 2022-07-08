@@ -130,7 +130,7 @@ function TimeTable({ userId }) {
 
   const title = (ind) => {
     if (ind === 0) {
-        return <Typography color="white" fontSize="20px" fontWeight="bold" align = "center" padding="10px 0 15px 0">{myMap[ind]}</Typography>;
+        return <Typography color="white" fontSize="20px" fontWeight="medium" align = "center" padding="10px 0 15px 0">{myMap[ind]}</Typography>;
       }
       return <Typography fontSize="20px" fontWeight="bold" align = "center" padding="10px 0 15px 0">{myMap[ind]}</Typography>;
   }
@@ -171,7 +171,7 @@ function TimeTable({ userId }) {
                             }}
                           >
                             {item.task_name}
-                            {isCompleted(item.isCompleted)}
+                            {isCompleted(item.is_completed)}
                           </div>
                             
                         </div>

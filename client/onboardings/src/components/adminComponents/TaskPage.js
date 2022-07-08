@@ -20,6 +20,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { mainListItems, secondaryListItems } from "../userComponents/drawer";
 import { useParams } from "react-router-dom";
 import { createTask, getOneTask } from "../../api/index.js";
+
 function Copyright(props) {
   return (
     <Typography
@@ -95,9 +96,11 @@ function DashboardContent() {
 
   let { id } = useParams();
 
-  getOneTask(id).then((res) => {
-    setData(res.data);
-  });
+  React.useEffect( () => {
+    getOneTask(id).then((res) => {
+      setData(res.data);
+    });
+  }, []);
 
   return (
     <ThemeProvider theme={mdTheme}>
