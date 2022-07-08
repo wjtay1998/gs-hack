@@ -128,15 +128,7 @@ const UserPage = () => {
                         overflow: 'auto',
                     }}>
                     <Toolbar />
-                    <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
-                        <Paper
-                            sx={{ width: "350px" }}
-                        >
-                            <div>
-                                <TaskList userId="abdee8ed-2bea-4e82-aff0-d78f51b271c5" />
-                            </div>
-                        </Paper>
-                    </Container>
+                    <TaskList userId="abdee8ed-2bea-4e82-aff0-d78f51b271c5" />
                 </Box>
             </Box>
 
