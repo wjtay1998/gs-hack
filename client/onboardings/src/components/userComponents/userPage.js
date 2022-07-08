@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
@@ -9,9 +9,6 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import TimeTable from './TaskList/timeTable.js';
@@ -78,7 +75,7 @@ const UserPage = () => {
         <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
-                <AppBar position="absolute" open={open}>
+                <AppBar position="absolute" backgroundColor="#5B7282" open={open}>
                     <Toolbar sx={{
                         pr: '24px', // keep right padding when drawer closed
                     }}>
@@ -94,6 +91,8 @@ const UserPage = () => {
                             <MenuIcon />
                         </IconButton>
                         <Typography
+                            fontWeight = "bold"
+                            fontSize = "25px"
                             component="h1"
                             variant="h6"
                             color="inherit"
@@ -131,11 +130,6 @@ const UserPage = () => {
                         height: '100vh',
                         overflow: 'auto',
                     }}>
-                    {/* <TaskList userId="abdee8ed-2bea-4e82-aff0-d78f51b271c5" />
-                    <TaskList userId="abdee8ed-2bea-4e82-aff0-d78f51b271c5" />
-                    <TaskList userId="abdee8ed-2bea-4e82-aff0-d78f51b271c5" />
-                    <TaskList userId="abdee8ed-2bea-4e82-aff0-d78f51b271c5" />
-                    <TaskList userId="abdee8ed-2bea-4e82-aff0-d78f51b271c5" /> */}
                     <TimeTable userId="abdee8ed-2bea-4e82-aff0-d78f51b271c5"/>
                 </Box>
             </Box>
