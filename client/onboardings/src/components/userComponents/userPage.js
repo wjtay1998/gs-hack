@@ -14,7 +14,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import TaskList from './TaskList/TaskList.js';
+import TimeTable from './TaskList/timeTable.js';
 import { mainListItems, secondaryListItems } from './drawer.js';
 
 
@@ -95,7 +95,7 @@ const UserPage = () => {
                             color="inherit"
                             noWrap
                             sx={{ flexGrow: 1 }}>
-                            OnboardinGS
+                            onboardinGS
                         </Typography>
                     </Toolbar>
                 </AppBar>
@@ -127,8 +127,12 @@ const UserPage = () => {
                         height: '100vh',
                         overflow: 'auto',
                     }}>
-                    <Toolbar />
+                    {/* <TaskList userId="abdee8ed-2bea-4e82-aff0-d78f51b271c5" />
                     <TaskList userId="abdee8ed-2bea-4e82-aff0-d78f51b271c5" />
+                    <TaskList userId="abdee8ed-2bea-4e82-aff0-d78f51b271c5" />
+                    <TaskList userId="abdee8ed-2bea-4e82-aff0-d78f51b271c5" />
+                    <TaskList userId="abdee8ed-2bea-4e82-aff0-d78f51b271c5" /> */}
+                    <TimeTable userId="abdee8ed-2bea-4e82-aff0-d78f51b271c5"/>
                 </Box>
             </Box>
 

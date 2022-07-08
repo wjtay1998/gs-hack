@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, CircularProgress } from '@mui/material'
 import * as api from '../../../api/index.js';
-import Task from './Task/Task.js';
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 
@@ -33,18 +32,22 @@ const TaskList = ({ userId }) => {
         userSelect: "none",
         padding: grid * 2,
         margin: `0 0 ${grid}px 0`,
+        borderRadius: '8px',
 
         // change background colour if dragging
-        background: isDragging ? "lightgreen" : "grey",
+        background: isDragging ? "lightgreen" : "white",
 
         // styles we need to apply on draggables
         ...draggableStyle
     });
 
     const getListStyle = isDraggingOver => ({
-        background: isDraggingOver ? "lightblue" : "lightgrey",
+        background: isDraggingOver ? "purple" : "lightblue",
         padding: grid,
-        width: 250
+        width: 250,
+        margin: '20px 0 0 20px',
+        height: '80%',
+        borderRadius: '8px'
     });
 
     return (
