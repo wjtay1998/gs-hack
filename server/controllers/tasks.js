@@ -27,6 +27,35 @@ export const getTasks = async (req, res) => {
     });
 }
 
+export const getOneTask = async (req, res) => {
+    var id = req.params.id;    
+    
+    var params = {
+        TableName: tableName,
+        KeyConditionExpression: 'ID = :ID',
+        ExpressionAttributeValues: {
+            ':ID': id
+        }
+    };
+
+    console.log(params)
+
+    client.query(params, (err, data) => {
+        if (err) {
+            console.error("Unable to get item.");
+            console.error("Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            console.log(data)
+            var response = data['Items'][0]
+            
+            res.contentType = 'application/json';
+            res.send(response)
+
+
+        }
+    });
+}
+
 
 export const createTask = async (req, res) => {
     var body = req.body;

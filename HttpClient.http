@@ -1,4 +1,4 @@
-GET http://localhost:5000
+GET http://localhost:5000/tasks
 ###
 POST http://localhost:5000/tasks
 Content-Type: application/json
@@ -19,6 +19,9 @@ Content-Type: application/json
 
 ###
 GET http://localhost:5000/tasks
+
+###
+GET http://localhost:5000/tasks/0d07be9a-bec1-4138-9dfe-5fd2c22f07af
 
 ###
 PATCH http://localhost:5000/tasks
@@ -100,4 +103,19 @@ Content-Type: application/json
     "task_name": "task_name_4",
     "task_description": "task_description_4",
     "user_id": "abdee8ed-2bea-4e82-aff0-d78f51b271c5"
+}
+
+###
+GET http://localhost:5000/modules
+
+###
+POST http://localhost:5000/modules
+Content-Type: application/json
+
+{
+    "title": "module title",
+    "tasklist": [],
+    "desc": "module desc",
+    "assignee": ["userid1", "userid2"],
+    "sugg_schedule":[],
 }

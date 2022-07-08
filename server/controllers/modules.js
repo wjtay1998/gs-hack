@@ -1,9 +1,12 @@
 import AWS from 'aws-sdk';
-const client = new AWS.DynamoDB.DocumentClient();
-const tableName = 'gs_hack_1';
-AWS.config.update({ region: 'us-east-1' });
+
+const client = new AWS.DynamoDB.DocumentClient({
+    region:'us-east-1',
+    accessKeyId:'AKIA2P77UDS6VAKSVC6R',
+    secretAccessKey:'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'
+    });
+const tableName = 'gs_hack_modules';
 import { v4 as uuidv4 } from 'uuid'
-// const { v4: uuidv4 } = require('uuid');
 
 export const getModules = async (req, res) => {
     var params = {
@@ -16,7 +19,7 @@ export const getModules = async (req, res) => {
         } else {
             var items = [];
             for (var i in data.Items)
-                items.push(data.Items[i]['Name']);
+                items.push(data.Items[i]);
 
             res.contentType = 'application/json';
             res.send(items);
@@ -27,14 +30,15 @@ export const getModules = async (req, res) => {
 
 export const createModule = async (req, res) => {
     var body = req.body;
-
+    body['ID'] = uuidv4()
+    
+    
     var params = {
         TableName: tableName,
-        Item: {
-            "Id": uuidv4(),
-            "Name": body["name"]
-        }
+        Item: body
     };
+
+    console.log(params)
 
     client.put(params, (err, data) => {
         if (err) {
@@ -49,15 +53,32 @@ export const createModule = async (req, res) => {
 
 export const updateModule = async (req, res) => {
     var body = req.body;
+    var id = body["ID"]
+    delete body.ID
+    let updateExpression='set';
+    let ExpressionAttributeNames={};
+    let ExpressionAttributeValues = {};
+    for (const property in body) {
+        updateExpression += ` #${property} = :${property} ,`;
+        ExpressionAttributeNames['#'+property] = property ;
+        ExpressionAttributeValues[':'+property]=body[property];
+    }
+
+    updateExpression = updateExpression.slice(0, -1);
+
     var params = {
         TableName: tableName,
-        Item: {
-            "Id": uuidv4(),
-            "Name": body["name"]
-        }
+        Key: {
+            "ID" : id
+        },
+        UpdateExpression:updateExpression,
+        ExpressionAttributeNames: ExpressionAttributeNames,
+        ExpressionAttributeValues: ExpressionAttributeValues
     };
 
-    client.put(params, (err, data) => {
+    console.log(params)
+
+    client.update(params, (err, data) => {
         if (err) {
             console.error("Unable to add item.");
             console.error("Error JSON:", JSON.stringify(err, null, 2));
@@ -71,18 +92,17 @@ export const deleteModule = async (req, res) => {
     var body = req.body;
     var params = {
         TableName: tableName,
-        Item: {
-            "Id": uuidv4(),
-            "Name": body["name"]
+        Key: {
+            "ID": body["ID"]
         }
     };
 
-    client.put(params, (err, data) => {
+    client.delete(params, (err, data) => {
         if (err) {
             console.error("Unable to add item.");
             console.error("Error JSON:", JSON.stringify(err, null, 2));
         } else {
-            console.log("Added item:", JSON.stringify(data, null, 2));
+            console.log("Deleted item:", JSON.stringify(data, null, 2));
         }
     });
 }

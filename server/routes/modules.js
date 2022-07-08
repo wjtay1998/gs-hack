@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.get('/', getModules);
 router.post('/', createModule);
-router.patch('/:id', updateModule);
-router.delete('/:id', deleteModule);
-router.patch('/:id/completeModule', completeModule)
+router.patch('/', updateModule);
+router.delete('/', deleteModule);
+
 
 export default router;

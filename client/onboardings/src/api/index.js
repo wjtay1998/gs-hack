@@ -9,9 +9,11 @@ export const scheduleTask = (task) => axios.post(`${url}/users`, task);
 export const completeUserTask = (task) => axios.post(`${url}/users`, task);
 
 //admin
-export const getTasks = () => axios.get(`${url}/tasks`)
+export const getTasks = () => axios.get(`${url}/tasks`);
+export const getOneTask = (taskId) => axios.get(`${url}/tasks/${taskId}`);
 export const createTask = (task) => axios.post(`${url}/tasks`, task);
 export const updateTask = (task) => axios.patch(`${url}/tasks`, task);
 export const deleteTask = (taskId) => axios.delete(`${url}/tasks`, {ID: taskId});
+
 //login
 export const login = (credentials) => axios.post(`${url}/users/login`, credentials);

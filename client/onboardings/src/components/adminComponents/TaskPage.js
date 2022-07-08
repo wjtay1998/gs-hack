@@ -18,7 +18,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
-
+import { useParams } from 'react-router-dom';
+import { createTask, getOneTask } from '../../api/index.js'
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -82,9 +83,14 @@ const mdTheme = createTheme();
 
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
+  const [data, setData] = React.useState({});
   const toggleDrawer = () => {
     setOpen(!open);
   };
+
+  let {id} = useParams();
+
+  getOneTask(id).then((res) => {setData(res.data)})
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -154,9 +160,35 @@ function DashboardContent() {
             flexGrow: 1,
             height: '100vh',
             overflow: 'auto',
+            marginTop: '30px',
           }}
         >
-          <Toolbar />
+          <div className="max-w-2xl px-6 py-16 mx-auto space-y-12">
+            <article className="space-y-8 bg-gray-100 text-gray-900">
+              <div className="space-y-6">
+                <h1 className="text-4xl font-bold md:tracking-tight md:text-5xl">{data['title']}</h1>
+                <div className="flex flex-col items-start justify-between w-full md:flex-row md:items-center text-gray-600">
+                  <div className="flex items-center md:space-x-2">
+                    <img src="https://source.unsplash.com/75x75/?portrait" alt="" className="w-4 h-4 border rounded-full bg-gray-500 border-gray-300" />
+                    <p className="text-sm">{data['updated_by']} • {data['updated_date']}</p>
+                  </div>
+                  <p className="flex-shrink-0 mt-3 text-sm md:mt-0">{data['estimated_comp_mins']} min task</p>
+                </div>
+              </div>
+              <div className="text-gray-800">
+                <p>{data['desc']}</p>
+              </div>
+            </article>
+            <div>
+              <div className="flex flex-wrap py-6 space-x-2 border-t border-dashed border-gray-600">
+                <a rel="noopener noreferrer" href="#" className="px-3 py-1 rounded-sm hover:underline bg-violet-600 text-gray-50">{data['tag']}</a>
+              </div>
+              <div className="space-y-2">
+                <h4 className="text-lg font-semibold">Task Description</h4>
+                <div dangerouslySetInnerHTML={{__html: data['post_content']}} />
+              </div>
+            </div>
+          </div>
           
         </Box>
       </Box>
@@ -164,6 +196,6 @@ function DashboardContent() {
   );
 }
 
-export default function Dashboard() {
+export default function TaskPage() {
   return <DashboardContent />;
 }
