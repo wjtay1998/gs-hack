@@ -16,8 +16,8 @@ import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import TaskList from './TaskList/TaskList.js';
+import { mainListItems, secondaryListItems } from './drawer.js';
 
 
 const UserPage = () => {
@@ -98,11 +98,6 @@ const UserPage = () => {
                             sx={{ flexGrow: 1 }}>
                             OnboardinGS
                         </Typography>
-                        <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" open={open}>
@@ -117,15 +112,41 @@ const UserPage = () => {
                         </IconButton>
                     </Toolbar>
                     <Divider />
-                        <List component="nav">hello
-                            <Divider sx={{ my: 1 }} />hello2
-                        </List>
+                    <List component="nav">
+                        {mainListItems}
+                        <Divider sx={{ my: 1 }} />
+                        {secondaryListItems}
+                    </List>
                 </Drawer>
+                <Box component="main"
+                    sx={{
+                        backgroundColor: (theme) =>
+                        theme.palette.mode === 'light'
+                            ? theme.palette.grey[100]
+                            : theme.palette.grey[900],
+                        flexGrow: 1,
+                        height: '100vh',
+                        overflow: 'auto',
+                    }}>
+                    <Toolbar />
+                    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12} md={8} lg={9}>
+                                <Paper
+                                sx={{
+                                    p: 2,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    height: 240,
+                                }}>
+                                    <TaskList position="relative" userId = "abdee8ed-2bea-4e82-aff0-d78f51b271c5"/>
+                                </Paper>  
+                            </Grid>       
+                        </Grid>
+                    </Container>
+                </Box>
             </Box>
-            
-            <div>
-                <TaskList userId = "abdee8ed-2bea-4e82-aff0-d78f51b271c5"></TaskList>      
-            </div>
+
         </ThemeProvider>
     )
 }
