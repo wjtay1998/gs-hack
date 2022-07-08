@@ -1,12 +1,10 @@
 import React, {useEffect} from 'react';
-import useStyles from './styles';
-import {Card, CardContent, Button, Typography} from '@mui/material';
+import {Card, CardContent, Typography} from '@mui/material';
 
 const Task = ({task}) => {
-    const classes = useStyles();
     return (
         <div>
-            <Card display= 'flex' borderRadius= '15px' height= '100%' position= 'relative'>
+            <Card display= 'flex' borderradius= '15px' height= '100%' width="300px" position= 'relative'>
                 <CardContent>
                     <Typography align='center' padding= '0 16px' variant="body2" color="textSecondary" component="p">{task.task_name}</Typography>
                     <Typography align='center' variant="body2" color="textSecondary" component="p">{task.task_description}</Typography>
