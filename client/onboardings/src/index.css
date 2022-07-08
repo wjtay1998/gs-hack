@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  @font-face{font-family:Goldman Sans;src:url("https://cdn.gs.com/fonts/goldman-sans/v1/goldman-sans-regular.woff2") format("woff2"),url("https://cdn.gs.com/fonts/goldman-sans/v1/goldman-sans-regular.woff") format("woff");}
+  font-family: 'Goldman Sans';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -14,4 +14,8 @@ code {
     monospace;
 }
 
-@font-face{}
+@font-face {
+  font-family: 'Goldman Sans';
+  src: url("https://cdn.gs.com/fonts/goldman-sans/v1/goldman-sans-regular.woff2") format("woff2"), 
+  url("https://cdn.gs.com/fonts/goldman-sans/v1/goldman-sans-regular.woff") format("woff");
+}

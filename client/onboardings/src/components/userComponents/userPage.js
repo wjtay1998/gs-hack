@@ -65,7 +65,11 @@ const UserPage = () => {
         }),
     );
 
-    const mdTheme = createTheme();
+    const mdTheme = createTheme({
+        typography: {
+            fontFamily: "Goldman Sans"
+        }
+    });
 
     const [open, setOpen] = useState(true);
     const toggleDrawer = () => { setOpen(!open); };
