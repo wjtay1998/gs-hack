@@ -129,9 +129,9 @@ const UserPage = () => {
                         overflow: 'auto',
                     }}>
                     <Toolbar />
-                    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+                    <Container maxWidth="100px" sx={{ mt: 4, mb: 4 }}>
                         <Grid container spacing={3}>
-                            <Grid item xs={12} md={8} lg={9}>
+                            <Grid item xs={12} md={10} lg={4}>
                                 <Paper
                                 sx={{
                                     p: 2,
@@ -139,7 +139,7 @@ const UserPage = () => {
                                     flexDirection: 'column',
                                     height: 240,
                                 }}>
-                                    <TaskList position="relative" userId = "abdee8ed-2bea-4e82-aff0-d78f51b271c5"/>
+                                    <TaskList userId = "abdee8ed-2bea-4e82-aff0-d78f51b271c5"/>
                                 </Paper>  
                             </Grid>       
                         </Grid>
