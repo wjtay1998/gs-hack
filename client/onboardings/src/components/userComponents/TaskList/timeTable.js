@@ -9,7 +9,7 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
   
-  if (startIndex !=0) {
+  if (startIndex !== 0) {
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
   }
@@ -23,7 +23,7 @@ const move = (source, destination, droppableSource, droppableDestination) => {
   const sourceClone = Array.from(source);
   const destClone = Array.from(destination);
 
-  if (sourceClone != 0) {
+  if (sourceClone !== 0) {
     const [removed] = sourceClone.splice(droppableSource.index, 1);
     destClone.splice(droppableDestination.index, 0, removed);
   }
@@ -46,14 +46,14 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   borderRadius: '8px',
 
   // change background colour if dragging
-  background: isDragging ? "lightblue" : "#DCE3E8",
+  background: isDragging ? "F2F5F7" : "#F2F5F7",
 
   // styles we need to apply on draggables
   ...draggableStyle
 });
 const getListStyle = (isDraggingOver, ind) => {
-    const colourMap = ["#5B7282","#DCE3E8","#C1CCD6", '#9FB1BD', '#C1CCD6', '#DCE3E8', '#2A3F4D', '#1C2B36']
-    if (ind == 0){
+    const colourMap = ["#333333","#DCE3E8","#C1CCD6", '#9FB1BD', '#C1CCD6', '#DCE3E8', '#2A3F4D', '#1C2B36']
+    if (ind === 0){
         return {
           background: isDraggingOver ? "lightgrey" : colourMap[ind],
           padding: grid,
@@ -129,7 +129,7 @@ function TimeTable({ userId }) {
   }
 
   const title = (ind) => {
-    if (ind == 0) {
+    if (ind === 0) {
         return <Typography color="white" fontSize="20px" fontWeight="bold" align = "center" padding="10px 0 15px 0">{myMap[ind]}</Typography>;
       }
       return <Typography fontSize="20px" fontWeight="bold" align = "center" padding="10px 0 15px 0">{myMap[ind]}</Typography>;
