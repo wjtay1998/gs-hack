@@ -1,10 +1,10 @@
-import { makeStyles } from '@mui/material/styles';
+
+import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   mainContainer: {
     display: 'flex',
-    flexDirection : "column",
-    padding: '10px'
+    padding: '40px',
   },
   smMargin: {
     margin: theme.spacing(1),

@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import useStyles from './styles';
 import { Grid, CircularProgress} from '@mui/material'
 import * as api from '../../../api/index.js';
 import Task from './Task/Task.js';
 
 const TaskList = ({userId}) => {
-    const classes = useStyles();
     const [taskList, setTaskList] = useState({});
     
     useEffect(() => {
@@ -22,7 +20,7 @@ const TaskList = ({userId}) => {
 
     return (
        !taskList.length ? <CircularProgress/> :
-       <Grid className={classes.mainContainer} container alignItems="stretch" spacing={2}>
+       <Grid flexDirection="column" display="flex" padding = "20px" container spacing={2}>
            {taskList.map((task) => (
                <Grid key = {task.task_id} item xs={12} sm={4}>
                    <Task task= {task}/>

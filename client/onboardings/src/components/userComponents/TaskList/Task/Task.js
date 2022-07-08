@@ -6,15 +6,14 @@ const Task = ({task}) => {
     const classes = useStyles();
     return (
         <div>
-            <Card className={classes.card}>
+            <Card display= 'flex' borderRadius= '15px' height= '100%' position= 'relative'>
                 <CardContent>
-                    <Typography className={classes.title} variant="body2" color="textSecondary" component="p">{task.task_name}</Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">{task.task_description}</Typography>
+                    <Typography align='center' padding= '0 16px' variant="body2" color="textSecondary" component="p">{task.task_name}</Typography>
+                    <Typography align='center' variant="body2" color="textSecondary" component="p">{task.task_description}</Typography>
                 </CardContent>
             </Card>
         </div>
     )
 }
-
 
 export default Task;

@@ -1,4 +1,4 @@
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(theme => ({
   border: {
@@ -9,8 +9,7 @@ export default makeStyles(theme => ({
   },
   card: {
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     borderRadius: '15px',
     height: '100%',
     position: 'relative',
@@ -20,7 +19,7 @@ export default makeStyles(theme => ({
   },
   details: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     margin: '20px',
   },
   title: {
