@@ -39,21 +39,26 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 };
 const grid = 8;
 
-const getItemStyle = (isDragging, draggableStyle) => ({
-  // some basic styles to make the items look a bit nicer
-  userSelect: "none",
-  padding: grid * 2,
-  margin: `0 0 ${grid}px 0`,
-  borderRadius: '8px',
-  display: 'flex',
-  justifyContent: 'center', 
+const getItemStyle = (isDragging, draggableStyle, ind) => {
+  const colourMap = ['#FFD5D4', '#BBF1C4', '#F8F1AE', '#F8F1AE', '#BBF1C4', '#FFD5D4'];
 
-  // change background colour if dragging
-  background: isDragging ? "F2F5F7" : "#F2F5F7",
+  return {
+      // some basic styles to make the items look a bit nicer
+    userSelect: "none",
+    padding: grid * 2,
+    margin: `0 0 ${grid}px 0`,
+    borderRadius: '8px',
+    display: 'flex',
+    justifyContent: 'center', 
 
-  // styles we need to apply on draggables
-  ...draggableStyle
-});
+    // change background colour if dragging
+    background: isDragging ? colourMap[ind] : colourMap[ind],
+
+    // styles we need to apply on draggables
+    ...draggableStyle
+  }
+
+};
 const getListStyle = (isDraggingOver, ind) => {
     const colourMap = ["#333333","#DCE3E8","#C1CCD6", '#9FB1BD', '#C1CCD6', '#DCE3E8', '#2A3F4D', '#1C2B36']
     if (ind === 0){
@@ -62,7 +67,7 @@ const getListStyle = (isDraggingOver, ind) => {
           padding: grid,
           width: 220,
           margin: '80px 50px 0 20px',
-          height: '600px',
+          height: '650px',
           borderRadius: '8px',
         }
     }
@@ -72,8 +77,8 @@ const getListStyle = (isDraggingOver, ind) => {
             padding: grid,
             width: 210,
             margin: '80px 0 0 20px',
-            height: '600px',
-            borderRadius: '8px'
+            height: '650px',
+            borderRadius: '8px',
           }
     }
 }
@@ -91,7 +96,6 @@ function TimeTable({ userId }) {
             value["ID"] = key;
             userTasklist.push(value);
         }
-        console.log(userTasklist);
         setState([userTasklist,[],[],[],[],[]]);
             })
         }, []
@@ -169,14 +173,16 @@ function TimeTable({ userId }) {
                           style={getItemStyle(
                             snapshot.isDragging,
                             provided.draggableProps.style,
+                            index
                           )}
                         >
                           <Button
                             component = {Link} to = {getLink(item.task_id)}
                             style={{
                               display: "flex",
-                              justifyContent: "space-around",
+                              justifyContent: "space-between",
                               color: 'black',
+                              width: '200px'
                             }}
                           >
                             {item.task_name}

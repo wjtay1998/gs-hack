@@ -89,7 +89,7 @@ const mdTheme = createTheme({
 });
 
 function DashboardContent() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState({});
   const toggleDrawer = () => {
     setOpen(!open);
