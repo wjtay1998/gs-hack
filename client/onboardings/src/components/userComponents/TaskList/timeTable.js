@@ -1,9 +1,10 @@
 import React, { useState , useEffect} from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import * as api from '../../../api/index.js';
-import { Typography } from "@mui/material";
+import { Typography, Button } from "@mui/material";
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import { Link } from 'react-router-dom';
 
 
 const reorder = (list, startIndex, endIndex) => {
@@ -44,6 +45,8 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   padding: grid * 2,
   margin: `0 0 ${grid}px 0`,
   borderRadius: '8px',
+  display: 'flex',
+  justifyContent: 'center', 
 
   // change background colour if dragging
   background: isDragging ? "F2F5F7" : "#F2F5F7",
@@ -135,6 +138,10 @@ function TimeTable({ userId }) {
       return <Typography fontSize="20px" fontWeight="bold" align = "center" padding="10px 0 15px 0">{myMap[ind]}</Typography>;
   }
 
+  const getLink = (id) => {
+    return "/taskdetails/" + id;
+  }
+
   return (
     <div>
       <div style={{ display: "flex" }}>
@@ -161,19 +168,20 @@ function TimeTable({ userId }) {
                           {...provided.dragHandleProps}
                           style={getItemStyle(
                             snapshot.isDragging,
-                            provided.draggableProps.style
+                            provided.draggableProps.style,
                           )}
                         >
-                          <div
+                          <Button
+                            component = {Link} to = {getLink(item.task_id)}
                             style={{
                               display: "flex",
-                              justifyContent: "space-around"
+                              justifyContent: "space-around",
+                              color: 'black',
                             }}
                           >
                             {item.task_name}
                             {isCompleted(item.is_completed)}
-                          </div>
-                            
+                          </Button>
                         </div>
                       )}
                     </Draggable>

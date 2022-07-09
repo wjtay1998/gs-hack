@@ -12,7 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import TimeTable from './TaskList/timeTable.js';
-import { mainListItems, secondaryListItems } from './drawer.js';
+import { mainListItems} from './drawer.js';
 
 
 const UserPage = () => {
@@ -36,7 +36,8 @@ const UserPage = () => {
         }),
     }));
 
-    const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+    const Drawer = styled(MuiDrawer, { 
+        shouldForwardProp: (prop) => prop !== 'open' })(
         ({ theme, open }) => ({
             '& .MuiDrawer-paper': {
                 position: 'relative',
@@ -119,7 +120,6 @@ const UserPage = () => {
                     <List component="nav">
                         {mainListItems}
                         <Divider sx={{ my: 1 }} />
-                        {secondaryListItems}
                     </List>
                 </Drawer>
                 <Box component="main"

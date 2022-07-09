@@ -10,14 +10,11 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { mainListItems, secondaryListItems } from "../userComponents/drawer";
+import { mainListItems } from "../userComponents/drawer";
 import { useParams } from "react-router-dom";
 import { createTask, getOneTask } from "../../api/index.js";
 
@@ -85,7 +82,11 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-const mdTheme = createTheme();
+const mdTheme = createTheme({
+  typography: {
+      fontFamily: "Goldman Sans"
+  }
+});
 
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
@@ -106,7 +107,7 @@ function DashboardContent() {
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <AppBar position="absolute" open={open}>
+        <AppBar style={{backgroundColor:"#3E5463"}} position="absolute" open={open}>
           <Toolbar
             sx={{
               pr: "24px", // keep right padding when drawer closed
@@ -125,19 +126,16 @@ function DashboardContent() {
               <MenuIcon />
             </IconButton>
             <Typography
+              marginLeft = "20px"
+              fontWeight = "medium"
+              fontSize = "25px"
               component="h1"
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 }}
-            >
-              Dashboard
-            </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+              sx={{ flexGrow: 1 }}>
+              onboardinGS
+          </Typography>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -157,7 +155,6 @@ function DashboardContent() {
           <List component="nav">
             {mainListItems}
             <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
           </List>
         </Drawer>
         <Box
