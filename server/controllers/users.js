@@ -1,10 +1,6 @@
 import AWS from 'aws-sdk';
 
-const client = new AWS.DynamoDB.DocumentClient({
-    region:'us-east-1',
-    accessKeyId:'AKIA2P77UDS6VAKSVC6R',
-    secretAccessKey:'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'
-    });
+
 const tableName = 'gs_hack_users';
 import { v4 as uuidv4 } from 'uuid'
 
