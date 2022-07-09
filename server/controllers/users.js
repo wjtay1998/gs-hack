@@ -1,4 +1,5 @@
 import AWS from 'aws-sdk';
+import {} from 'dotenv/config'
 
 const client = new AWS.DynamoDB.DocumentClient({
     region:'us-east-1',
