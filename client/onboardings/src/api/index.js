@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const url = "http://localhost:5001";
-const url = "http://ec2-54-175-197-72.compute-1.amazonaws.com/";
+const url = "http://ec2-54-175-197-72.compute-1.amazonaws.com";
 
 //users
 export const getUserTasks = (userId) =>
