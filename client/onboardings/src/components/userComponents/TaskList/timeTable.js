@@ -39,8 +39,8 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 };
 const grid = 8;
 
-const getItemStyle = (isDragging, draggableStyle, ind) => {
-  const colourMap = ['#FFD5D4', '#BBF1C4', '#F8F1AE', '#F8F1AE', '#BBF1C4', '#FFD5D4'];
+const getItemStyle = (isDragging, draggableStyle, tag) => {
+  const colorMap = {"HR":"#BBF1C4", "Compliance":"#F8F1AE", "GSAM":"#FFD5D4"}
 
   return {
       // some basic styles to make the items look a bit nicer
@@ -52,7 +52,7 @@ const getItemStyle = (isDragging, draggableStyle, ind) => {
     justifyContent: 'center', 
 
     // change background colour if dragging
-    background: isDragging ? colourMap[ind] : colourMap[ind],
+    background: isDragging ? colorMap[tag] :  colorMap[tag],
 
     // styles we need to apply on draggables
     ...draggableStyle
@@ -82,8 +82,6 @@ const getListStyle = (isDraggingOver, ind) => {
           }
     }
 }
-  
-  
 
 
 function TimeTable({ userId }) {
@@ -173,7 +171,7 @@ function TimeTable({ userId }) {
                           style={getItemStyle(
                             snapshot.isDragging,
                             provided.draggableProps.style,
-                            index
+                            item.tag
                           )}
                         >
                           <Button
