@@ -84,7 +84,18 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:5000/users/getUserTasks
+GET https://s91rw4b5k6.execute-api.us-east-1.amazonaws.com/dev/modules
+
+###
+POST https://s91rw4b5k6.execute-api.us-east-1.amazonaws.com/dev/users/getUserTasks
+Content-Type: application/json
+
+{
+    "ID":"abdee8ed-2bea-4e82-aff0-d78f51b271c5"
+}
+
+###
+POST http://localhost/users/getUserTasks
 Content-Type: application/json
 
 {
