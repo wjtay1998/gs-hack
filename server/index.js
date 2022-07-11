@@ -11,7 +11,7 @@ app.use(express.json({limit: "30mb" , extended: true}));
 app.use(express.urlencoded({limit: "30mb" , extended: true}));
 app.use(cors());
 app.get('/', (req,res)=> {
-    res.send("Hello to Onboardin-GS");
+    res.send("Hello to Onboardin-GS v1");
 })
 app.use('/tasks', taskRoutes);
 app.use('/modules', moduleRoutes);
