@@ -22,6 +22,7 @@ import ModuleTaskList from "./ModuleTaskList";
 // import Chart from "./Chart";
 // import Deposits from "./Deposits";
 import Orders from "./Orders";
+import AllModules from "./AllModules";
 
 function Copyright(props) {
   return (
@@ -96,7 +97,7 @@ const mdTheme = createTheme({
   },
 });
 
-const ModuleContent = () => {
+const AllModuleContent = () => {
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = () => {
@@ -188,23 +189,6 @@ const ModuleContent = () => {
               {/* <Grid item xs={12} md={4} lg={3}>
                 <h1></h1>
               </Grid> */}
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Orders />
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    height: 240,
-                  }}
-                >
-                  <Deposits />
-                </Paper>
-              </Grid>
 
               {/* Recent Deposits */}
 
@@ -212,7 +196,7 @@ const ModuleContent = () => {
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
                   {/* <Orders /> */}
-                  <ModuleTaskList userId="abdee8ed-2bea-4e82-aff0-d78f51b271c5" />
+                  <AllModules />
                 </Paper>
               </Grid>
             </Grid>
@@ -224,6 +208,6 @@ const ModuleContent = () => {
   );
 };
 
-export default function ModulePage() {
-  return <ModuleContent />;
+export default function AllModulesPage() {
+  return <AllModuleContent />;
 }

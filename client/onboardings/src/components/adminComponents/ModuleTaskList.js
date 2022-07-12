@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import * as api from "../../../api/index.js";
+import * as api from "../../api/index";
 import { Typography, Button } from "@mui/material";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
@@ -36,8 +36,15 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 };
 const grid = 8;
 
-const getItemStyle = (isDragging, draggableStyle, tag) => {
-  const colorMap = { HR: "#BBF1C4", Compliance: "#F8F1AE", GSAM: "#FFD5D4" };
+const getItemStyle = (isDragging, draggableStyle, ind) => {
+  const colourMap = [
+    "#FFD5D4",
+    "#BBF1C4",
+    "#F8F1AE",
+    "#F8F1AE",
+    "#BBF1C4",
+    "#FFD5D4",
+  ];
 
   return {
     // some basic styles to make the items look a bit nicer
@@ -49,7 +56,7 @@ const getItemStyle = (isDragging, draggableStyle, tag) => {
     justifyContent: "center",
 
     // change background colour if dragging
-    background: isDragging ? colorMap[tag] : colorMap[tag],
+    background: isDragging ? colourMap[ind] : colourMap[ind],
 
     // styles we need to apply on draggables
     ...draggableStyle,
@@ -87,8 +94,8 @@ const getListStyle = (isDraggingOver, ind) => {
   }
 };
 
-function TimeTable({ userId }) {
-  const [state, setState] = useState([[], [], [], [], [], []]);
+function ModuleTaskList({ userId }) {
+  const [state, setState] = useState([[], []]);
 
   useEffect(() => {
     api.getUserTasks(userId).then((res) => {
@@ -97,7 +104,7 @@ function TimeTable({ userId }) {
         value["ID"] = key;
         userTasklist.push(value);
       }
-      setState([userTasklist, [], [], [], [], []]);
+      setState([userTasklist, []]);
     });
   }, []);
 
@@ -126,14 +133,7 @@ function TimeTable({ userId }) {
     }
   }
 
-  const myMap = [
-    "Unscheduled Tasks",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-  ];
+  const myMap = ["All Tasks", "Selected Module Tasks"];
 
   const isCompleted = (isCompleted) => {
     if (isCompleted) {
@@ -199,7 +199,7 @@ function TimeTable({ userId }) {
                           style={getItemStyle(
                             snapshot.isDragging,
                             provided.draggableProps.style,
-                            item.tag
+                            index
                           )}
                         >
                           <Button
@@ -230,4 +230,4 @@ function TimeTable({ userId }) {
   );
 }
 
-export default TimeTable;
+export default ModuleTaskList;

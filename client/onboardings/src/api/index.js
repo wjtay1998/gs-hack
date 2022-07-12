@@ -11,6 +11,9 @@ export const createUserTask = (task) =>
 export const scheduleTask = (task) => axios.post(`${url}/users`, task);
 export const completeUserTask = (task) => axios.post(`${url}/users`, task);
 
+export const getAllModules = () => axios.get(`${url}/modules`);
+export const createModule = (module) => axios.post(`${url}/modules`, module);
+
 //admin
 export const getTasks = () => axios.get(`${url}/tasks`);
 export const getOneTask = (taskId) => axios.get(`${url}/tasks/${taskId}`);

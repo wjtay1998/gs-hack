@@ -87,8 +87,8 @@ const Drawer = styled(MuiDrawer, {
 
 const mdTheme = createTheme({
   typography: {
-      fontFamily: "Goldman Sans"
-  }
+    fontFamily: "Goldman Sans",
+  },
 });
 
 function DashboardContent() {
@@ -100,7 +100,7 @@ function DashboardContent() {
 
   let { id } = useParams();
 
-  React.useEffect( () => {
+  React.useEffect(() => {
     getOneTask(id).then((res) => {
       setData(res.data);
     });
@@ -114,7 +114,11 @@ function DashboardContent() {
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <AppBar style={{backgroundColor:"#3E5463"}} position="absolute" open={open}>
+        <AppBar
+          style={{ backgroundColor: "#3E5463" }}
+          position="absolute"
+          open={open}
+        >
           <Toolbar
             sx={{
               pr: "24px", // keep right padding when drawer closed
@@ -133,16 +137,17 @@ function DashboardContent() {
               <MenuIcon />
             </IconButton>
             <Typography
-              marginLeft = "20px"
-              fontWeight = "medium"
-              fontSize = "25px"
+              marginLeft="20px"
+              fontWeight="medium"
+              fontSize="25px"
               component="h1"
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 }}>
-              onboardinGS
-          </Typography>
+              sx={{ flexGrow: 1 }}
+            >
+              Onboardin-GS
+            </Typography>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
