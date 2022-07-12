@@ -103,17 +103,18 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5000/users/createUserTask
+POST http://localhost:3000/users/createUserTask
 Content-Type: application/json
 
 {
-    "task_id": "8a8191f1-8e1d-4aea-a4df-8c5b40609651",
-    "is_completed": true,
-    "date_assigned": "2022-07-09",
+    "task_id": "f1d3be67-d64c-4a0b-84da-907dca9ebf24",
+    "is_completed": false,
+    "date_assigned": "2022-07-13",
     "scheduled_date": "2022-08-05T09:00:00",
-    "task_name": "Environment Set Up",
-    "task_description": "Configuring vanilla IntelliJ Ultimate",
-    "user_id": "abdee8ed-2bea-4e82-aff0-d78f51b271c5"
+    "task_name": "Cybersecurity Training",
+    "task_description": "Mandatory 2021 Information Security and Cybersecurity Essentials Training",
+    "user_id": "abdee8ed-2bea-4e82-aff0-d78f51b271c5",
+    "tag": "HR"
 }
 
 ###
