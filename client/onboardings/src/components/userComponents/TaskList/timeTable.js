@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import * as api from "../../../api/index.js";
-import { Typography, Button } from "@mui/material";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import { Button, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { Link } from "react-router-dom";
+import * as api from "../../../api/index.js";
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -97,7 +97,14 @@ function TimeTable({ userId }) {
         value["ID"] = key;
         userTasklist.push(value);
       }
-      setState([userTasklist.slice(0,3), userTasklist.slice(3,5), [], userTasklist.slice(5,8), userTasklist.slice(8,11), []]);
+      setState([
+        userTasklist.slice(0, 3),
+        userTasklist.slice(3, 5),
+        [],
+        userTasklist.slice(5, 8),
+        userTasklist.slice(8, 11),
+        [],
+      ]);
     });
   }, []);
 

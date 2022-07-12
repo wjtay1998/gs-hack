@@ -171,7 +171,7 @@ function DashboardContent() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Onboardin-GS
+              ONBOARDINGS
             </Typography>
           </Toolbar>
         </AppBar>
@@ -291,7 +291,7 @@ function DashboardContent() {
                     />
                   </Grid> */}
                   <Grid item xs={12}>
-                  <VideoInput padding="100px" width={250} height={200} />
+                    <VideoInput padding="100px" width={250} height={200} />
                   </Grid>
                   <Grid item xs={12}>
                     <Typography variant="p" gutterBottom>

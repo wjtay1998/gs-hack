@@ -1,121 +1,140 @@
-import * as React from "react";
-import Button from "@mui/material/Button";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Title from "./Title";
-import AddIcon from "@mui/icons-material/Add";
-import TextField from "@mui/material/TextField";
+import AddTaskIcon from "@mui/icons-material/AddTask";
+import { IconButton, MenuItem, Select } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import * as React from "react";
+import * as api from "../../api/index.js";
+import Title from "./Title";
 
-// Generate Order Data
-function createData(id, name, title, division, department, kerberos) {
-  return { id, name, title, division, department, kerberos };
-}
-
-const rows = [
-  createData(
-    0,
-    "Elvis Presley",
-    "Summer Analyst",
-    "Engineering",
-    "Distributed Scheduling",
-    "presle"
-  ),
-  createData(
-    1,
-    "Paul McCartney",
-    "Analyst",
-    "Engineering",
-    "Distributed Scheduling",
-    "mccartp"
-  ),
-  createData(
-    2,
-    "Tom Schoddddlz",
-    "Associate",
-    "Engineering",
-    "Distributed Scheduling",
-    "schoddt"
-  ),
-  createData(
-    3,
-    "Michael Jackson",
-    "Vice President",
-    "Engineering",
-    "Distributed Scheduling",
-    "jacksonm"
-  ),
-  createData(
-    4,
-    "Bruce Springsteen",
-    "Managing Director",
-    "Engineering",
-    "Distributed Scheduling",
-    "springsb"
-  ),
-];
-
+import Button from "@mui/material/Button";
 export default function ModuleTaskList() {
   const [open, setOpen] = React.useState(false);
-  const [name, setName] = React.useState("Benjamin Tan");
-  const [kerberos, setKerberos] = React.useState("tabenj");
-  const [title, setTitle] = React.useState("Managing Director");
-  const [department, setDepartment] = React.useState("Distributed Scheduling");
-  const [division, setDivision] = React.useState("Engineering");
+  const [taskList, setTaskList] = React.useState([]);
+  const [taskDropdown, setTaskDropdown] = React.useState([]);
+  const [taskDisplay, setTaskDisplay] = React.useState([]);
+  const [myselect, setSelect] = React.useState("");
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const handleAddEmployee = () => {
+  const handleClose = () => {
+    setSelect("");
     setOpen(false);
-    rows.push(createData(5, name, title, division, department, kerberos));
+  };
+
+  React.useEffect(() => {
+    api.getTasks().then((x) => {
+      const lst = x.data.filter((y) => {
+        return "title" in y;
+      });
+      setTaskList(lst.sort((a, b) => a.title.localeCompare(b.title)));
+      const tempArr = [];
+      lst.forEach((element) => {
+        tempArr.push(element.title);
+        // setTaskDropdown([...taskDropdown, element.title]);
+      });
+      setTaskDropdown(tempArr);
+    });
+  }, [taskDisplay]);
+  const handleClick = () => {
+    if (myselect !== "") {
+      const arr = [...taskDisplay];
+      taskList.forEach((x) => {
+        if (x.title === myselect) {
+          arr.push(x);
+        }
+      });
+      setTaskDisplay(arr);
+      setOpen(true);
+    }
+  };
+  const handleSelect = (e) => {
+    setSelect(e.target.value);
   };
 
   return (
     <React.Fragment>
       <Title>Selected Tasks</Title>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <Select
+          id="combo-box-demo"
+          sx={{ width: 1000 }}
+          value={myselect}
+          onChange={handleSelect}
+        >
+          {taskDropdown.map((taskD, idx) => (
+            <MenuItem value={taskD} key={idx}>
+              {taskD}
+            </MenuItem>
+          ))}
+        </Select>
+        <IconButton size="large" color="success" onClick={handleClick}>
+          <AddTaskIcon />
+        </IconButton>
+      </div>
       <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>
-              <b>Name</b>
+              <b>Task Name</b>
             </TableCell>
             <TableCell>
-              <b>Kerberos</b>
+              <b>Description</b>
+            </TableCell>
+            <TableCell
+              style={{
+                width: "150px",
+              }}
+            >
+              <b>Date Created</b>
             </TableCell>
             <TableCell>
-              <b>Title</b>
-            </TableCell>
-            <TableCell>
-              <b>Department</b>
-            </TableCell>
-            <TableCell>
-              <b>Division</b>
+              <b>Estimated Time (mins)</b>
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>
-                <a href="https://app.gsweb.site.gs.com/directory/">
-                  <u>{row.name}</u>
+          {taskDisplay.map((task, idx) => (
+            <TableRow key={idx}>
+              <TableCell
+                style={{
+                  // width: "50px",
+                  overflow: "hidden",
+                  textOverflow: "ellpisis",
+                }}
+              >
+                <a href={`/taskdetails/${task.ID}`}>
+                  <u>{task.title}</u>
                 </a>
               </TableCell>
-              <TableCell>{row.kerberos}</TableCell>
-              <TableCell>{row.title}</TableCell>
-              <TableCell>{row.department}</TableCell>
-              <TableCell>{row.division}</TableCell>
+              <TableCell>{task.desc}</TableCell>
+              <TableCell>{task.created_date}</TableCell>
+              <TableCell>{task.estimated_comp_mins}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Task Added"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            {myselect} has been added to the list of tasks for this module.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Close</Button>
+        </DialogActions>
+      </Dialog>
     </React.Fragment>
   );
 }

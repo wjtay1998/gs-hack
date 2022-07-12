@@ -104,7 +104,9 @@ export default function Orders() {
           {rows.map((row) => (
             <TableRow key={row.id}>
               <TableCell>
-                <a href="https://app.gsweb.site.gs.com/directory/">
+                <a
+                  href={`https://app.gsweb.site.gs.com/directory/${row.kerberos}`}
+                >
                   <u>{row.name}</u>
                 </a>
               </TableCell>

@@ -1,21 +1,22 @@
-import * as React from "react";
-import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import MuiDrawer from "@mui/material/Drawer";
-import Box from "@mui/material/Box";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import Button from '@mui/material/Button';
-import Link from "@mui/material/Link";
-import MenuIcon from "@mui/icons-material/Menu";
+import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { mainListItems } from "../userComponents/drawer";
+import MenuIcon from "@mui/icons-material/Menu";
+import MuiAppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import Divider from "@mui/material/Divider";
+import MuiDrawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
+import List from "@mui/material/List";
+import { createTheme, styled, ThemeProvider } from "@mui/material/styles";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import * as React from "react";
 import { useParams } from "react-router-dom";
-import { createTask, getOneTask } from "../../api/index.js";
+import { getOneTask } from "../../api/index.js";
+import { mainListItems } from "../userComponents/drawer";
 import Video from "./CreateTask/video.js";
 
 // Render a YouTube video player
@@ -224,8 +225,23 @@ function DashboardContent() {
                   dangerouslySetInnerHTML={{ __html: data["post_content"] }}
                 />
               </div>
-              <div className="space-y-2">
-                <Button borderRadius="8px">Complete</Button>
+              <div
+                className="space-y-2"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "20px",
+                }}
+              >
+                <Button
+                  borderRadius="8px"
+                  color="success"
+                  variant="outlined"
+                  startIcon={<AssignmentTurnedInIcon />}
+                >
+                  Mark Task as Complete
+                </Button>
               </div>
             </div>
           </div>

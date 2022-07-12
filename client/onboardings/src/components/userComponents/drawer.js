@@ -1,12 +1,11 @@
-import * as React from "react";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import LayersIcon from "@mui/icons-material/Layers";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
+import * as React from "react";
 import { Link } from "react-router-dom";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import LayersIcon from "@mui/icons-material/Layers";
 
 export const mainListItems = (
   <React.Fragment>
