@@ -9,11 +9,10 @@ import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import Badge from "@mui/material/Badge";
+import Button from '@mui/material/Button';
 import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import { mainListItems } from "../userComponents/drawer";
 import { useParams } from "react-router-dom";
 import { createTask, getOneTask } from "../../api/index.js";
@@ -224,6 +223,9 @@ function DashboardContent() {
                 <div
                   dangerouslySetInnerHTML={{ __html: data["post_content"] }}
                 />
+              </div>
+              <div className="space-y-2">
+                <Button borderRadius="8px">Complete</Button>
               </div>
             </div>
           </div>

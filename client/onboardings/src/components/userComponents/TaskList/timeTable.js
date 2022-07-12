@@ -97,7 +97,7 @@ function TimeTable({ userId }) {
         value["ID"] = key;
         userTasklist.push(value);
       }
-      setState([userTasklist, [], [], [], [], []]);
+      setState([userTasklist.slice(0,3), userTasklist.slice(3,5), [], userTasklist.slice(5,8), userTasklist.slice(8,11), []]);
     });
   }, []);
 
