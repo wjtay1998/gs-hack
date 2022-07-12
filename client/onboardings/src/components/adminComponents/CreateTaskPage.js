@@ -24,6 +24,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { createTask } from "../../api/index.js";
 import { RichTextEditor } from "@mantine/rte";
+import VideoInput from "./CreateTask/VideoInput";
 
 const drawerWidth = 240;
 
@@ -289,7 +290,7 @@ function DashboardContent() {
                       onChange={onVideoChange}
                     />
                   </Grid>
-
+                  <VideoInput width={400} height={300} />
                   <Grid item xs={12}>
                     <Typography variant="p" gutterBottom>
                       Task Details
