@@ -77,6 +77,8 @@ export const createTask = async (req, res) => {
             console.error("Error JSON:", JSON.stringify(err, null, 2));
         } else {
             console.log("Added item:", JSON.stringify(data, null, 2));
+            res.contentType = 'application/json'
+            res.send(params['Item'])
         }
     });
 }
