@@ -36,11 +36,18 @@ export default function ModuleTaskList() {
       const tempArr = [];
       lst.forEach((element) => {
         tempArr.push(element.title);
-        // setTaskDropdown([...taskDropdown, element.title]);
       });
       setTaskDropdown(tempArr);
+      const myTaskList = [];
+      lst.forEach((element) => {
+        if (element.title === "Global Compliance") {
+          myTaskList.push(element);
+        }
+      });
+      setTaskDisplay(myTaskList);
     });
   }, [taskDisplay]);
+
   const handleClick = () => {
     if (myselect !== "") {
       const arr = [...taskDisplay];
