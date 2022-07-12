@@ -34,7 +34,7 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Onboardin-GS
+        ONBOARDINGS
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -146,7 +146,7 @@ const AllModuleContent = () => {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Onboardin-GS
+              ONBOARDINGS
             </Typography>
           </Toolbar>
         </AppBar>

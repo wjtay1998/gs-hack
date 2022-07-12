@@ -23,7 +23,7 @@ function App() {
         <Route path="/login" element={LoginPage} />
         <Route path="/user" element={<UserPage />} />
         <Route path="/createTask" element={<AdminCreateTask />} />
-        <Route path="/viewModule" element={<ModulePage />} />
+        <Route path="/viewModule/:id" element={<ModulePage />} />
         <Route path="/allModules" element={<AllModulesPage />} />
         <Route path="/taskdetails/:id" element={<TaskPage />} />
         <Route path="*" element={<PageNotFound />} />

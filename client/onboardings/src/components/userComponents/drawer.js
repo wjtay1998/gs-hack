@@ -22,12 +22,6 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Create Task" />
     </ListItemButton>
-    <ListItemButton component={Link} to="/viewModule">
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Manage Modules" />
-    </ListItemButton>
     <ListItemButton component={Link} to="/allModules">
       <ListItemIcon>
         <LayersIcon />

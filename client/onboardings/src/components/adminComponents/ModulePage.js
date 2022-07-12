@@ -22,6 +22,8 @@ import ModuleTaskList from "./ModuleTaskList";
 // import Chart from "./Chart";
 // import Deposits from "./Deposits";
 import Orders from "./Orders";
+import { useParams } from "react-router-dom";
+import * as api from "../../api/index";
 
 function Copyright(props) {
   return (
@@ -33,7 +35,7 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Onboardin-GS
+        ONBOARDINGS
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -103,6 +105,9 @@ const ModuleContent = () => {
     setOpen(!open);
   };
 
+  let { id } = useParams();
+  React.useEffect(() => {}, []);
+
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
@@ -145,7 +150,7 @@ const ModuleContent = () => {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Onboardin-GS
+              ONBOARDINGS
             </Typography>
           </Toolbar>
         </AppBar>
@@ -182,6 +187,21 @@ const ModuleContent = () => {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            <Grid>
+              <Typography
+                marginLeft="20px"
+                fontWeight="medium"
+                fontSize="25px"
+                component="h1"
+                variant="h6"
+                color="inherit"
+                noWrap
+                sx={{ flexGrow: 1 }}
+                style={{ paddingBottom: "20px" }}
+              >
+                Module Title: <u>{id}</u>
+              </Typography>
+            </Grid>
             <Grid container spacing={3}>
               {/* Chart */}
               <div style={{ display: "flex" }}></div>

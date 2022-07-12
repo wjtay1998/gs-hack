@@ -38,13 +38,15 @@ export default function AllModules() {
     });
   };
 
+  const getLink = (id) => {
+    return "/viewModule/" + id;
+  };
+
   React.useEffect(() => {
     api
       .getAllModules()
       .then((x) =>
-        setModuleList(
-          x.data.sort((a, b) => a.moduleTitle.localeCompare(b.moduleTitle))
-        )
+        setModuleList(x.data.sort((a, b) => a.title.localeCompare(b.title)))
       );
   }, [moduleList]);
 
@@ -66,7 +68,7 @@ export default function AllModules() {
           {moduleList.map((row) => (
             <TableRow key={row.ID}>
               <TableCell>
-                <a href="https://app.gsweb.site.gs.com/directory/">
+                <a href={getLink(row.title)}>
                   <u>{row.title}</u>
                 </a>
               </TableCell>

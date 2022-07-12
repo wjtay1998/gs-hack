@@ -17,7 +17,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { mainListItems } from "../userComponents/drawer";
 import { useParams } from "react-router-dom";
 import { createTask, getOneTask } from "../../api/index.js";
-import Video from './CreateTask/video.js'
+import Video from "./CreateTask/video.js";
 
 // Render a YouTube video player
 
@@ -109,7 +109,7 @@ function DashboardContent() {
   const VidRef = React.useRef(null);
   const handlePlayVideo = () => {
     VidRef.current.play();
-  }
+  };
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
@@ -146,7 +146,7 @@ function DashboardContent() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Onboardin-GS
+              ONBOARDINGS
             </Typography>
           </Toolbar>
         </AppBar>
@@ -206,7 +206,7 @@ function DashboardContent() {
               </div>
               <Video URL={data.video_link} />
               <div className="text-gray-800">
-                <p>{data["desc"]}</p> 
+                <p>{data["desc"]}</p>
               </div>
             </article>
             <div>

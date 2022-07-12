@@ -114,7 +114,7 @@ const UserPage = () => {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Onboardin-GS
+              ONBOARDINGS
             </Typography>
           </Toolbar>
         </AppBar>
