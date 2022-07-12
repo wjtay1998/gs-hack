@@ -268,7 +268,7 @@ function DashboardContent() {
                     />
                   </Grid>
 
-                  <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                     <TextField
                       required
                       id="Video"
@@ -280,8 +280,10 @@ function DashboardContent() {
                       value={video}
                       onChange={onVideoChange}
                     />
+                  </Grid> */}
+                  <Grid item xs={12}>
+                  <VideoInput padding="100px" width={250} height={200} />
                   </Grid>
-                  <VideoInput width={400} height={300} />
                   <Grid item xs={12}>
                     <Typography variant="p" gutterBottom>
                       Task Details

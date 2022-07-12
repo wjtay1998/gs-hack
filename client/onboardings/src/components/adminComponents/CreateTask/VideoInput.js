@@ -26,7 +26,7 @@ export default function VideoInput(props) {
         onChange={handleFileChange}
         accept=".mov,.mp4"
       />
-      {!source && <button onClick={handleChoose}>Choose</button>}
+      {!source }
       {source && (
         <video
           className="VideoInput_video"
@@ -36,7 +36,6 @@ export default function VideoInput(props) {
           src={source}
         />
       )}
-      <div className="VideoInput_footer">{source || "Nothing selectd"}</div>
     </div>
   );
 }
