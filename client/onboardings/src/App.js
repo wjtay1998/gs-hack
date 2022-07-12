@@ -12,6 +12,7 @@ import AdminCreateTask from "./components/adminComponents/CreateTaskPage";
 import ModulePage from "./components/adminComponents/ModulePage";
 import TaskPage from "./components/adminComponents/TaskPage";
 import PageNotFound from "./components/404Page";
+import AllModulesPage from "./components/adminComponents/AllModulesPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/user" element={<UserPage />} />
         <Route path="/createTask" element={<AdminCreateTask />} />
         <Route path="/viewModule" element={<ModulePage />} />
+        <Route path="/allModules" element={<AllModulesPage />} />
         <Route path="/taskdetails/:id" element={<TaskPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

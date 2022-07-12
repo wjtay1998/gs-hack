@@ -6,6 +6,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Link } from "react-router-dom";
 import BarChartIcon from "@mui/icons-material/BarChart";
+import LayersIcon from "@mui/icons-material/Layers";
 
 export const mainListItems = (
   <React.Fragment>
@@ -24,6 +25,12 @@ export const mainListItems = (
     <ListItemButton component={Link} to="/viewModule">
       <ListItemIcon>
         <BarChartIcon />
+      </ListItemIcon>
+      <ListItemText primary="Manage Modules" />
+    </ListItemButton>
+    <ListItemButton component={Link} to="/allModules">
+      <ListItemIcon>
+        <LayersIcon />
       </ListItemIcon>
       <ListItemText primary="Manage Modules" />
     </ListItemButton>
